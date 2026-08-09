@@ -7,7 +7,10 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+business_decision_env/
 .Python
+BusinessDecisionData/
+logs/
 build/
 develop-eggs/
 dist/
