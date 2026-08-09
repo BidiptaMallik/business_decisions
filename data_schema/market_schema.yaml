@@ -1,0 +1,95 @@
+columns:
+  - state_code: object
+  - latitude: float64
+  - longitude: float64
+  - zip_code: int64
+  - city: object
+  - name: object
+  - founded_at: object
+  - closed_at: object
+  - first_funding_at: object
+  - last_funding_at: object
+  - age_first_funding_year: float64
+  - age_last_funding_year: float64
+  - age_first_milestone_year: float64
+  - age_last_milestone_year: float64
+  - relationships: int64
+  - funding_rounds: int64
+  - funding_total_usd: int64
+  - milestones: int64
+  - category_code: object
+  - is_software: int64
+  - is_web: int64
+  - is_mobile: int64
+  - is_enterprise: int64
+  - is_advertising: int64
+  - is_gamesvideo: int64
+  - is_ecommerce: int64
+  - is_biotech: int64
+  - is_consulting: int64
+  - is_othercategory: int64
+  - has_VC: int64
+  - has_angel: int64
+  - has_roundA: int64
+  - has_roundB: int64
+  - has_roundC: int64
+  - has_roundD: int64
+  - avg_participants: float64
+  - is_top500: int64
+  - status: object
+
+# status values are typically: acquired / closed / operating / ipo
+target_column: status
+
+numerical_columns:
+  - latitude
+  - longitude
+  - age_first_funding_year
+  - age_last_funding_year
+  - age_first_milestone_year
+  - age_last_milestone_year
+  - relationships
+  - funding_rounds
+  - funding_total_usd
+  - milestones
+  - avg_participants
+  - is_software
+  - is_web
+  - is_mobile
+  - is_enterprise
+  - is_advertising
+  - is_gamesvideo
+  - is_ecommerce
+  - is_biotech
+  - is_consulting
+  - is_othercategory
+  - has_VC
+  - has_angel
+  - has_roundA
+  - has_roundB
+  - has_roundC
+  - has_roundD
+  - is_top500
+
+categorical_columns:
+  - state_code
+  - city
+  - category_code
+
+drop_columns:
+  - Unnamed: 0
+  - zip_code
+  - id
+  - Unnamed: 6
+  - name
+  - founded_at
+  - closed_at
+  - first_funding_at
+  - last_funding_at
+  - state_code.1
+  - object_id
+  - is_CA
+  - is_NY
+  - is_MA
+  - is_TX
+  - is_otherstate

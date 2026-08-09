@@ -1,0 +1,93 @@
+columns:
+  - Type: object
+  - Days for shipping (real): int64
+  - Days for shipment (scheduled): int64
+  - Benefit per order: float64
+  - Sales per customer: float64
+  - Delivery Status: object
+  - Late_delivery_risk: int64
+  - Category Name: object
+  - Customer Country: object
+  - Customer Segment: object
+  - Customer State: object
+  - Department Name: object
+  - Market: object
+  - Order City: object
+  - Order Country: object
+  - order date (DateOrders): object
+  - Order Item Discount: float64
+  - Order Item Discount Rate: float64
+  - Order Item Product Price: float64
+  - Order Item Profit Ratio: float64
+  - Order Item Quantity: int64
+  - Sales: float64
+  - Order Item Total: float64
+  - Order Profit Per Order: float64
+  - Order Region: object
+  - Order State: object
+  - Order Status: object
+  - Product Name: object
+  - Product Price: float64
+  - shipping date (DateOrders): object
+  - Shipping Mode: object
+
+target_column: Late_delivery_risk
+
+numerical_columns:
+  - Days for shipping (real)
+  - Days for shipment (scheduled)
+  - Benefit per order
+  - Sales per customer
+  - Order Item Discount
+  - Order Item Discount Rate
+  - Order Item Product Price
+  - Order Item Profit Ratio
+  - Order Item Quantity
+  - Sales
+  - Order Item Total
+  - Order Profit Per Order
+  - Product Price
+
+categorical_columns:
+  - Type
+  - Delivery Status
+  - Category Name
+  - Customer Country
+  - Customer Segment
+  - Customer State
+  - Department Name
+  - Market
+  - Order City
+  - Order Country
+  - Order Region
+  - Order State
+  - Order Status
+  - Product Name
+  - Shipping Mode
+
+# PII (customer name/email/password/address) and pure ID columns dropped
+drop_columns:
+  - Category Id
+  - Customer City
+  - Customer Email
+  - Customer Fname
+  - Customer Id
+  - Customer Lname
+  - Customer Password
+  - Customer Street
+  - Customer Zipcode
+  - Department Id
+  - Latitude
+  - Longitude
+  - Order Customer Id
+  - order date (DateOrders)
+  - Order Id
+  - Order Item Cardprod Id
+  - Order Item Id
+  - Order Zipcode
+  - Product Card Id
+  - Product Category Id
+  - Product Description
+  - Product Image
+  - Product Status
+  - shipping date (DateOrders)

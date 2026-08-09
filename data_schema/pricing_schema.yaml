@@ -1,0 +1,28 @@
+columns:
+  - InvoiceNo: int64
+  - StockCode: object
+  - Description: object
+  - Quantity: int64
+  - InvoiceDate: object
+  - UnitPrice: float64
+  - CustomerID: int64
+  - Country: object
+
+# Note: this dataset has no built-in label. UnitPrice is used as a working
+# target for elasticity/regression work; revisit once feature engineering
+# (e.g. Revenue = Quantity * UnitPrice) is done in data_transformation.py
+target_column: UnitPrice
+
+numerical_columns:
+  - Quantity
+  - UnitPrice
+
+categorical_columns:
+  - StockCode
+  - Country
+
+drop_columns:
+  - InvoiceNo
+  - Description
+  - InvoiceDate
+  - CustomerID
