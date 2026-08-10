@@ -11,6 +11,7 @@ business_decision_env/
 .Python
 BusinessDecisionData/
 logs/
+Artifacts/
 build/
 develop-eggs/
 dist/
