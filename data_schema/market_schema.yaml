@@ -77,10 +77,10 @@ categorical_columns:
   - category_code
 
 drop_columns:
-  - Unnamed: 0
+  - "Unnamed: 0"
   - zip_code
   - id
-  - Unnamed: 6
+  - "Unnamed: 6"
   - name
   - founded_at
   - closed_at

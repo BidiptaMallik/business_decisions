@@ -8,17 +8,12 @@ columns:
   - CustomerID: int64
   - Country: object
 
-# Note: this dataset has no built-in label. UnitPrice is used as a working
-# target for elasticity/regression work; revisit once feature engineering
-# (e.g. Revenue = Quantity * UnitPrice) is done in data_transformation.py
 target_column: UnitPrice
 
 numerical_columns:
   - Quantity
-  - UnitPrice
 
 categorical_columns:
-  - StockCode
   - Country
 
 drop_columns:
@@ -26,3 +21,4 @@ drop_columns:
   - Description
   - InvoiceDate
   - CustomerID
+  - StockCode
