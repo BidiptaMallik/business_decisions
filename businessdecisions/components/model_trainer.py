@@ -22,6 +22,9 @@ from sklearn.ensemble import (
 )
 
 
+import mlflow
+import mlflow.sklearn 
+
 class ModelTrainer:
     def __init__(self, model_trainer_config: ModelTrainerConfig, data_transformation_artifact: DataTransformationArtifact):
         try:
@@ -95,6 +98,9 @@ class ModelTrainer:
                 train_metric = get_regression_score(y_true=y_train, y_pred=y_train_pred)
                 test_metric = get_regression_score(y_true=y_test, y_pred=y_test_pred)
 
+            self.track_mlflow(best_model, train_metric, run_name_suffix="train")
+            self.track_mlflow(best_model, test_metric, run_name_suffix="test")
+
             preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
             model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)
             os.makedirs(model_dir_path, exist_ok=True)
@@ -126,5 +132,25 @@ class ModelTrainer:
                 test_arr[:, :-1], test_arr[:, -1],
             )
             return self.train_model(x_train, y_train, x_test, y_test)
+        except Exception as e:
+            raise BusinessDecisionException(e, sys)
+
+    def track_mlflow(self,best_model,metric_artifact,run_name_suffix="train"):
+        try:
+            with mlflow.start_run(run_name=f"{self.module_name}_{run_name_suffix}"):
+                mlflow.log_param("module",self.module_name)
+
+                if hasattr(metric_artifact,"f1_score"):
+                    mlflow.log_metric("f1_score", metric_artifact.f1_score)
+                    mlflow.log_metric("precision", metric_artifact.precision_score)
+                    mlflow.log_metric("recall_score", metric_artifact.recall_score)
+
+                else:
+                
+                    mlflow.log_metric("r2_score", metric_artifact.r2_score)
+                    mlflow.log_metric("mae", metric_artifact.mae)
+                    mlflow.log_metric("rmse", metric_artifact.rmse)
+
+                mlflow.sklearn.log_model(best_model, "model")
         except Exception as e:
             raise BusinessDecisionException(e, sys)
