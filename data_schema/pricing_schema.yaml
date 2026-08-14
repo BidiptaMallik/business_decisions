@@ -15,10 +15,10 @@ numerical_columns:
 
 categorical_columns:
   - Country
+  - StockCode
 
 drop_columns:
   - InvoiceNo
   - Description
   - InvoiceDate
   - CustomerID
-  - StockCode

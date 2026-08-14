@@ -49,3 +49,14 @@ DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR: str = "transformed_object"
 TRANSFORMED_TRAIN_FILE_NAME: str = "train.npy"
 TRANSFORMED_TEST_FILE_NAME: str = "test.npy"
 PREPROCESSING_OBJECT_FILE_NAME: str = "preprocessing.pkl"
+
+
+MODEL_TRAINER_DIR_NAME: str = "model_trainer"
+MODEL_TRAINER_TRAINED_MODEL_DIR: str = "trained_model"
+MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model.pkl"
+MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
+MODEL_TRAINER_OVER_FITTING_UNDER_FITTING_THRESHOLD: float = 0.05
+
+# which modules are classification vs regression
+CLASSIFICATION_MODULES = ["churn", "market", "supplychain"]
+REGRESSION_MODULES = ["pricing"]
