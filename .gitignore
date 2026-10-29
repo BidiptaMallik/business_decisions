@@ -6,6 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+# Large ML model files
+models/supplychain/best_model.pkl
+
+# MLflow database
+mlflow.db
+
 # Distribution / packaging
 business_decision_env/
 .Python
@@ -220,3 +226,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Large trained models
+models/supplychain/best_model.pkl

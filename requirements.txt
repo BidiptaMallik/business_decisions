@@ -17,4 +17,5 @@ mlflow
 fastapi
 python-multipart
 uvicorn
-##-e .
+catboost
+-e .
