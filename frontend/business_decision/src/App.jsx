@@ -6,7 +6,6 @@ import Dashboard from './components/Dashboard';
 import Overview from './components/Overview';
 import { MODULES } from './moduleConfig';
 
-// view is one of: 'landing' | 'dashboard' | 'overview' | a module key
 export default function App() {
   const [view, setView] = useState('landing');
   const [history, setHistory] = useState([]);
@@ -21,7 +20,6 @@ export default function App() {
 
   const isModule = Boolean(MODULES[view]);
 
-  // Current view title & accent
   const currentTitle = isModule
     ? MODULES[view].label
     : view === 'overview'
@@ -44,7 +42,6 @@ export default function App() {
       />
 
       <div className="content-container">
-        {/* Top App Header */}
         <header className="app-topbar">
           <div className="topbar-breadcrumbs">
             <span className="crumb-root" onClick={() => setView('dashboard')}>Console</span>
@@ -68,7 +65,6 @@ export default function App() {
           </div>
         </header>
 
-        {/* Main View Area */}
         <main className="main">
           {view === 'dashboard' && <Dashboard onSelect={setView} historyCount={history.length} />}
           {view === 'overview' && <Overview history={history} onSelect={setView} />}

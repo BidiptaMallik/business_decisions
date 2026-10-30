@@ -8,7 +8,6 @@ export default function Overview({ history, onSelect }) {
     ? history
     : history.filter((h) => h.moduleKey === filter);
 
-  // Calculate quick metrics
   const totalDecisions = history.length;
   const churnAlerts = history.filter((h) => h.moduleKey === 'churn' && h.verdict.toLowerCase().includes('risk')).length;
   const lateShipments = history.filter((h) => h.moduleKey === 'supplychain' && h.verdict.toLowerCase().includes('late')).length;
@@ -16,7 +15,7 @@ export default function Overview({ history, onSelect }) {
 
   return (
     <div className="overview-page">
-      {/* Top Action Navigation */}
+
       <div className="form-top-actions">
         {onSelect && (
           <button className="back-to-dash-btn" onClick={() => onSelect('dashboard')}>
@@ -29,7 +28,6 @@ export default function Overview({ history, onSelect }) {
         </div>
       </div>
 
-      {/* Header Banner */}
       <div className="overview-header-banner">
         <p className="eyebrow" style={{ '--accent': 'var(--churn)' }}>Operational Audit Ledger</p>
         <h1 className="module-title">Session Decision Intelligence</h1>
@@ -37,7 +35,6 @@ export default function Overview({ history, onSelect }) {
           Continuous record of all model predictions executed across this session. Audit timestamps, verdict outputs, and domain tags are tracked in real-time.
         </p>
 
-        {/* Executive Summary Stats */}
         <div className="overview-stats-grid">
           <div className="overview-stat-card">
             <span className="stat-label">TOTAL EVALUATIONS</span>
@@ -66,7 +63,6 @@ export default function Overview({ history, onSelect }) {
         </div>
       </div>
 
-      {/* Filter Tabs Bar */}
       <div className="overview-filter-bar">
         <div className="overview-filters-group">
           <button
@@ -93,7 +89,6 @@ export default function Overview({ history, onSelect }) {
         </div>
       </div>
 
-      {/* History Log List or Empty State */}
       {filteredHistory.length === 0 ? (
         <div className="overview-empty-state">
           <div className="empty-state-icon">&#10710;</div>

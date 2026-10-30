@@ -15,7 +15,6 @@ from businessdecisions.exception.exception import BusinessDecisionException
 from businessdecisions.logging.logger import logging
 from businessdecisions.utils.main_utils.utils import load_object
 
-# Compatibility patch for older scikit-learn models serialized with sklearn <= 1.6
 try:
     import sklearn.compose._column_transformer as _ct
     if not hasattr(_ct, '_RemainderColsList'):
@@ -46,17 +45,6 @@ async def business_exception_handler(request: Request, exc: BusinessDecisionExce
     )
 
 
-# ---------------------------------------------------------------------------
-# Model file locations. Two formats exist in this project:
-#
-# "wrapped"  -> churn, market: model.pkl already bundles preprocessor + model
-#               together (a BusinessModel object saved by the pipeline).
-#               Just load model.pkl and call .predict(df) directly.
-#
-# "separate" -> pricing, supplychain: trained separately in Colab.
-#               model and preprocessor saved as two different files.
-#               Must load both and manually transform before predicting.
-# ---------------------------------------------------------------------------
 
 MODEL_PATHS = {
     "churn": {
@@ -67,11 +55,6 @@ MODEL_PATHS = {
         "format": "wrapped",
         "model": "models/market/model.pkl",
     },
-    #"pricing": {
-       # "format": "separate",
-       # "model": "models/pricing/best_model (1).pkl",
-        #"preprocessor": "models/pricing/preprocessor (1).pkl",
-    #},
     "pricing": {
     "format": "catboost",
     "model": "models/pricing/quantity_prediction_model.cbm",
@@ -95,18 +78,13 @@ def run_prediction(module_name: str, df: pd.DataFrame):
             f"for module '{module_name}'."
         )
 
-    # ---------------------------------------------------------
-    # CatBoost model — pricing / quantity prediction
-    # ---------------------------------------------------------
     if config["format"] == "catboost":
 
         model = CatBoostRegressor()
         model.load_model(config["model"])
 
-        # Use the exact feature order stored inside the trained model
         model_features = model.feature_names_
 
-        # Reorder the incoming dataframe to match training order
         missing_features = [
             col for col in model_features
             if col not in df.columns
@@ -133,9 +111,6 @@ def run_prediction(module_name: str, df: pd.DataFrame):
         business_model = load_object(config["model"])
         y_pred = business_model.predict(df)
 
-    # ---------------------------------------------------------
-    # Separate model + preprocessor — supplychain
-    # ---------------------------------------------------------
     elif config["format"] == "separate":
 
         if not os.path.exists(config["preprocessor"]):
@@ -178,10 +153,6 @@ async def index():
     return RedirectResponse(url="/docs")
 
 
-# ---------------------------------------------------------------------------
-# MAIN ENDPOINT — a business user manually types in field values (no file
-# needed) and gets a single, human-readable prediction back immediately.
-# ---------------------------------------------------------------------------
 
 class PredictionInput(BaseModel):
     data: Dict[str, Any]
@@ -234,10 +205,6 @@ async def predict_single_route(module_name: str, input_data: PredictionInput):
         raise BusinessDecisionException(e, sys)
 
 
-# ---------------------------------------------------------------------------
-# OPTIONAL — batch prediction via CSV upload, for bulk analysis of many
-# customers/products/shipments at once, rather than one at a time.
-# ---------------------------------------------------------------------------
 
 @app.post("/predict-batch/{module_name}")
 async def predict_batch_route(module_name: str, request: Request, file: UploadFile = File(...)):

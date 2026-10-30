@@ -9,12 +9,9 @@ def get_requirements(file_path:str)->List[str]:
     try:
         
         with open('requirements.txt','r') as file:
-            ##read line from file
             lines=file.readlines()
-            ##Process each line 
             for line in lines:
                 requirement=line.strip()
-                ##ignore empty lines and -e .
                 if requirement and requirement != '-e .':
                     requirement_list.append(requirement)
 

@@ -5,7 +5,6 @@ export default function ReadoutPanel({ module, result }) {
   const tone = module.verdictTone(result);
   const verdict = module.verdictLabel(result);
 
-  // Generate actionable executive recommendation based on the domain & verdict
   const getStrategicProtocol = () => {
     switch (module.key) {
       case 'churn':
@@ -73,7 +72,7 @@ export default function ReadoutPanel({ module, result }) {
       </div>
 
       <div className="readout-body">
-        {/* Main Verdict Line */}
+
         <div className="readout-verdict-row">
           <p className="readout-verdict" style={{ color: tone }}>{verdict}</p>
           <span className="readout-status-tag" style={{ color: tone, borderColor: tone }}>
@@ -81,13 +80,11 @@ export default function ReadoutPanel({ module, result }) {
           </span>
         </div>
 
-        {/* Strategic Guidance Box */}
         <div className="readout-strategy-box">
           <div className="strategy-label">Recommended Strategic Action:</div>
           <p className="strategy-text">{protocol.action}</p>
         </div>
 
-        {/* Telemetry Bar */}
         <div className="readout-telemetry-grid">
           <div className="telemetry-item">
             <span className="telemetry-label">INFERENCE SOURCE</span>
@@ -103,7 +100,6 @@ export default function ReadoutPanel({ module, result }) {
           </div>
         </div>
 
-        {/* Confidence Fill Meter */}
         <div className="confidence-bar-wrapper">
           <div className="confidence-bar">
             <div className="confidence-fill" style={{ width: '100%', background: tone }} />

@@ -5,7 +5,7 @@ export default function Dashboard({ onSelect, historyCount }) {
     churn: '/images/retention.jpg',
     supplychain: '/images/supplychain.jpg',
     market: '/images/market.jpg',
-    pricing: null, // Will use custom styled demand graphic
+    pricing: null,
   };
 
   const moduleAlgorithms = {
@@ -17,7 +17,6 @@ export default function Dashboard({ onSelect, historyCount }) {
 
   return (
     <div className="dashboard-view">
-      {/* Executive Hero Banner */}
       <div className="dash-hero-banner">
         <div className="dash-hero-left">
           <span className="eyebrow" style={{ '--accent': 'var(--churn)' }}>
@@ -46,7 +45,6 @@ export default function Dashboard({ onSelect, historyCount }) {
         </div>
       </div>
 
-      {/* Main Grid of Decision Engines */}
       <div className="dash-section-header">
         <h2 className="dash-section-title">Specialized Decision Engines</h2>
         <span className="dash-section-sub">Select an engine to enter operational parameters</span>
@@ -65,7 +63,6 @@ export default function Dashboard({ onSelect, historyCount }) {
               style={{ '--accent': m.accent }}
               onClick={() => onSelect(key)}
             >
-              {/* Card Image / Preview */}
               <div className="dash-card-media">
                 {img ? (
                   <img src={img} alt={m.label} className="dash-card-img" />
@@ -83,7 +80,6 @@ export default function Dashboard({ onSelect, historyCount }) {
                 <span className="dash-card-badge">MODULE 0{idx + 1}</span>
               </div>
 
-              {/* Card Content */}
               <div className="dash-card-body">
                 <div className="dash-card-header-row">
                   <span className="dash-dot" style={{ background: m.accent }} />
@@ -105,7 +101,6 @@ export default function Dashboard({ onSelect, historyCount }) {
         })}
       </div>
 
-      {/* Audit Ledger Banner Card */}
       <div className="dash-audit-banner" onClick={() => onSelect('overview')}>
         <div className="dash-audit-left">
           <div className="dash-audit-icon-box">&#10710;</div>

@@ -40,10 +40,8 @@ def run_pipeline(module_name):
 if __name__ == "__main__":
     try:
         if len(sys.argv) > 1:
-            # single module: python main.py churn
             run_pipeline(sys.argv[1])
         else:
-            # no argument: run all 4
             for module in ["churn", "pricing", "market", "supplychain"]:
                 print(f"\n{'='*60}\nRunning: {module}\n{'='*60}\n")
                 run_pipeline(module)

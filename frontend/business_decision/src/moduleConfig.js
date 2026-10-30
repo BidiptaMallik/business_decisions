@@ -1,8 +1,3 @@
-// Each module maps 1:1 to a FastAPI endpoint: POST /predict-single/{key}
-// "groups" break the form into logical sections instead of one long list.
-// "buildPayload" lets a module transform raw form state into the exact
-// JSON shape the backend model expects (used by market to expand a single
-// category choice into the one-hot flags the model was trained on).
 
 export const MODULES = {
   churn: {
@@ -315,8 +310,7 @@ export const MODULES = {
         ],
       },
     ],
-    // The model was trained on one-hot category flags rather than a single
-    // category field. Expand the chosen category into those flags here.
+
     buildPayload: (values) => {
       const categories = ['software', 'web', 'mobile', 'enterprise', 'advertising', 'gamesvideo', 'ecommerce', 'biotech', 'consulting', 'other'];
       const flags = {};

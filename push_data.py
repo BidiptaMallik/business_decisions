@@ -8,7 +8,7 @@ load_dotenv()
 MONGO_DB_URL=os.getenv("MONGO_DB_URL")
 
 
-import certifi ## python package used by python library to secure a http connection
+import certifi
 ca=certifi.where()
 
 import pandas as pd 

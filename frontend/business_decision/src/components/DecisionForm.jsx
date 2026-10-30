@@ -22,7 +22,6 @@ function initialState(module) {
   return state;
 }
 
-// Curated realistic executive sample scenarios for instant evaluation
 const PRESETS = {
   churn: {
     highRisk: {
@@ -316,7 +315,7 @@ export default function DecisionForm({ module, onResult, onBack }) {
 
   return (
     <div className="form-view-container" style={{ '--accent': module.accent }}>
-      {/* Top Navigation Row */}
+
       <div className="form-top-actions">
         {onBack && (
           <button className="back-to-dash-btn" onClick={onBack}>
@@ -329,7 +328,6 @@ export default function DecisionForm({ module, onResult, onBack }) {
         </div>
       </div>
 
-      {/* Module Header Card */}
       <div className="form-header-card">
         <p className="eyebrow">{module.eyebrow}</p>
         <h1 className="module-title">{module.title}</h1>
@@ -342,7 +340,6 @@ export default function DecisionForm({ module, onResult, onBack }) {
           </div>
         )}
 
-        {/* Quick Presets Bar */}
         {modulePresets && (
           <div className="form-presets-bar">
             <span className="presets-label">Quick Scenario Presets:</span>
@@ -369,7 +366,6 @@ export default function DecisionForm({ module, onResult, onBack }) {
         )}
       </div>
 
-      {/* Input Parameters Form */}
       <form onSubmit={handleSubmit} className="decision-form-element">
         {module.groups.map((group, gIdx) => (
           <div className="form-group" key={group.title}>
@@ -430,7 +426,6 @@ export default function DecisionForm({ module, onResult, onBack }) {
           </div>
         ))}
 
-        {/* Submit Bar */}
         <div className="submit-row">
           <button className="submit-btn" type="submit" disabled={loading}>
             {loading ? (
@@ -451,18 +446,16 @@ export default function DecisionForm({ module, onResult, onBack }) {
         </div>
       </form>
 
-      {/* Error Banner */}
       {error && (
         <div className="error-note">
           <span className="error-icon">&#9888;</span>
           <div>
             <strong>Inference Request Failed:</strong> {error}
-            <div className="error-hint">Ensure the Python FastAPI backend is running on http://localhost:8000.</div>
+            <div className="error-hint">Ensure the Python FastAPI backend is running on http:
           </div>
         </div>
       )}
 
-      {/* Executive Readout Panel */}
       {result && <ReadoutPanel module={module} result={result} />}
     </div>
   );

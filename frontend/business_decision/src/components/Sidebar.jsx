@@ -3,7 +3,7 @@ import { MODULES, MODULE_ORDER } from '../moduleConfig';
 export default function Sidebar({ active, onSelect, onHome, onLanding }) {
   return (
     <nav className="sidebar">
-      {/* Brand Header */}
+
       <div className="sidebar-brand-box">
         <button className="brand-btn" onClick={onHome}>
           <div className="brand-icon-wrapper">
@@ -16,7 +16,6 @@ export default function Sidebar({ active, onSelect, onHome, onLanding }) {
         </button>
       </div>
 
-      {/* Navigation Groups */}
       <div className="sidebar-section-label">Management</div>
 
       <button
@@ -60,7 +59,6 @@ export default function Sidebar({ active, onSelect, onHome, onLanding }) {
 
       <div className="sidebar-divider" />
 
-      {/* Tour / Welcome Page Link */}
       {onLanding && (
         <button
           className="sidebar-landing-btn"
@@ -71,7 +69,6 @@ export default function Sidebar({ active, onSelect, onHome, onLanding }) {
         </button>
       )}
 
-      {/* Telemetry Footer */}
       <div className="sidebar-foot">
         <div className="sidebar-telemetry-row">
           <span className="sidebar-telemetry-indicator" />

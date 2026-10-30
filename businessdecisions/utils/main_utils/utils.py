@@ -9,7 +9,6 @@ import pandas as pd
 from businessdecisions.exception.exception import BusinessDecisionException
 from businessdecisions.logging.logger import logging
 
-# Compatibility patch for older scikit-learn models serialized with sklearn <= 1.6
 try:
     import sklearn.compose._column_transformer as _ct
     if not hasattr(_ct, '_RemainderColsList'):

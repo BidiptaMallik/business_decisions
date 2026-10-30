@@ -10,7 +10,6 @@ export default function Landing({ onStart }) {
     supplychain: { scheduledDays: 3, shippingMode: 'Standard Class', discountRate: 0.15, profitRatio: 0.12 }
   });
 
-  // Dynamic interactive simulation calculator on the landing page
   const getDemoVerdict = (key) => {
     switch (key) {
       case 'churn': {
@@ -72,10 +71,9 @@ export default function Landing({ onStart }) {
 
   return (
     <div className="landing-page">
-      {/* --- Ambient Glowing Backdrop --- */}
+
       <div className="landing-glow-mesh" />
 
-      {/* --- Navigation Header --- */}
       <header className="landing-nav">
         <div className="landing-nav-brand">
           <div className="brand-badge-ring">
@@ -105,7 +103,6 @@ export default function Landing({ onStart }) {
         </div>
       </header>
 
-      {/* --- Hero Section --- */}
       <section className="landing-hero">
         <div className="landing-hero-content">
           <div className="hero-pill-badge">
@@ -136,7 +133,6 @@ export default function Landing({ onStart }) {
             </button>
           </div>
 
-          {/* Quick Metrics Bar */}
           <div className="hero-stats-row">
             <div className="stat-card">
               <span className="stat-number">4</span>
@@ -160,7 +156,6 @@ export default function Landing({ onStart }) {
           </div>
         </div>
 
-        {/* Hero Visual Showcase */}
         <div className="landing-hero-visual-wrapper">
           <div className="visual-card-frame">
             <div className="visual-card-glow" />
@@ -169,7 +164,7 @@ export default function Landing({ onStart }) {
               alt="Global AI Decision Platform Executive Overview showing neural network performance and customer risk index"
               className="visual-hero-img"
             />
-            {/* Overlay Telemetry Cards */}
+
             <div className="telemetry-badge telemetry-top">
               <div className="telemetry-icon-pulse" />
               <div>
@@ -189,7 +184,6 @@ export default function Landing({ onStart }) {
         </div>
       </section>
 
-      {/* --- Live Interactive Simulator Section --- */}
       <section id="demo-simulator" className="landing-simulator-section">
         <div className="section-header-centered">
           <span className="section-eyebrow">Interactive Test Flight</span>
@@ -200,7 +194,7 @@ export default function Landing({ onStart }) {
         </div>
 
         <div className="simulator-container">
-          {/* Module Selector Tabs */}
+
           <div className="simulator-tabs">
             {MODULE_ORDER.map((key) => {
               const m = MODULES[key];
@@ -219,9 +213,8 @@ export default function Landing({ onStart }) {
             })}
           </div>
 
-          {/* Simulator Body */}
           <div className="simulator-body">
-            {/* Inputs Column */}
+
             <div className="sim-inputs-column">
               <div className="sim-column-header">
                 <span className="sim-badge" style={{ '--accent': MODULES[activeTab].accent }}>
@@ -429,7 +422,6 @@ export default function Landing({ onStart }) {
               )}
             </div>
 
-            {/* Output Verdict Card */}
             <div className="sim-verdict-column">
               <div className="sim-verdict-card">
                 <div className="sim-verdict-badge-row">
@@ -467,7 +459,6 @@ export default function Landing({ onStart }) {
         </div>
       </section>
 
-      {/* --- Deep-Dive Strategic Modules Grid (With Real Images) --- */}
       <section className="landing-modules-showcase">
         <div className="section-header-centered">
           <span className="section-eyebrow">Enterprise ML Capabilities</span>
@@ -478,7 +469,7 @@ export default function Landing({ onStart }) {
         </div>
 
         <div className="showcase-grid">
-          {/* Card 1: Retention */}
+
           <div className="showcase-card" onClick={() => onStart('churn')}>
             <div className="showcase-img-frame">
               <img
@@ -505,7 +496,6 @@ export default function Landing({ onStart }) {
             </div>
           </div>
 
-          {/* Card 2: Supply Chain */}
           <div className="showcase-card" onClick={() => onStart('supplychain')}>
             <div className="showcase-img-frame">
               <img
@@ -532,7 +522,6 @@ export default function Landing({ onStart }) {
             </div>
           </div>
 
-          {/* Card 3: Market Expansion */}
           <div className="showcase-card" onClick={() => onStart('market')}>
             <div className="showcase-img-frame">
               <img
@@ -559,7 +548,6 @@ export default function Landing({ onStart }) {
             </div>
           </div>
 
-          {/* Card 4: Demand Forecasting */}
           <div className="showcase-card" onClick={() => onStart('pricing')}>
             <div className="showcase-img-frame showcase-img-graphic">
               <div className="graphic-chart-preview">
@@ -595,7 +583,6 @@ export default function Landing({ onStart }) {
         </div>
       </section>
 
-      {/* --- Decision Lifecycle Section --- */}
       <section className="landing-lifecycle-section">
         <div className="section-header-centered">
           <span className="section-eyebrow">Enterprise Architecture</span>
@@ -621,7 +608,6 @@ export default function Landing({ onStart }) {
         </div>
       </section>
 
-      {/* --- Bottom Conversion Banner --- */}
       <section className="landing-bottom-cta">
         <div className="bottom-cta-inner">
           <div className="bottom-cta-badge">UNIFIED DECISION CONSOLE</div>
@@ -640,10 +626,9 @@ export default function Landing({ onStart }) {
         </div>
       </section>
 
-      {/* --- Footer --- */}
       <footer className="landing-footer">
         <div className="footer-left">
-          <span className="footer-brand">STRATA // DECISION INTELLIGENCE CONSOLE</span>
+          <span className="footer-brand">STRATA 
           <span className="footer-copy">&copy; 2026 Enterprise Business Decisions Suite. All models production-ready.</span>
         </div>
         <div className="footer-right">

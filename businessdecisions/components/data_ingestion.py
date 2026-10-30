@@ -1,6 +1,5 @@
 from businessdecisions.exception.exception import BusinessDecisionException
 from businessdecisions.logging.logger import logging
-##config for data ingestion 
 from businessdecisions.entity.config_entity import DataIngestionConfig
 from businessdecisions.entity.artifact_entity import DataIngestionArtifact
 import sys 
@@ -31,7 +30,6 @@ class DataIngestion:
             module_name = self.data_ingestion_config.module_name
 
             if module_name == "supplychain":
-                # supplychain is too large for MongoDB free tier — read directly from CSV
                 csv_path = "BusinessDecisionData/supplychain_data1.csv"
                 df = pd.read_csv(csv_path, encoding='latin1', low_memory=False)
             else:
