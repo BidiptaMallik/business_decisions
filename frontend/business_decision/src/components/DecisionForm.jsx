@@ -451,7 +451,7 @@ export default function DecisionForm({ module, onResult, onBack }) {
           <span className="error-icon">&#9888;</span>
           <div>
             <strong>Inference Request Failed:</strong> {error}
-            <div className="error-hint">Ensure the Python FastAPI backend is running on http:
+            <div className="error-hint">Ensure the Python FastAPI backend is running on http://localhost:8000.</div>
           </div>
         </div>
       )}

@@ -628,7 +628,7 @@ export default function Landing({ onStart }) {
 
       <footer className="landing-footer">
         <div className="footer-left">
-          <span className="footer-brand">STRATA 
+          <span className="footer-brand">STRATA</span>
           <span className="footer-copy">&copy; 2026 Enterprise Business Decisions Suite. All models production-ready.</span>
         </div>
         <div className="footer-right">
